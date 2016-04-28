@@ -1,4 +1,5 @@
 // client/js/views/library.js
+/*TODO - add coverimage functionality */
 
 var app = app || {};
 
