@@ -72,7 +72,7 @@ app.get('/api/books/:id', function(req, res) {
 });
 
 app.put('/api/books/:id', function(req, res) {
-  console.log('Updating book: ' req.body.title);
+  console.log('Updating book: ' + req.body.title);
   return BookModel.findById(req.params.id, function(err,book) {
     book.title = req.body.title;
     book.author = req.body.author;
