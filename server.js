@@ -44,9 +44,9 @@ app.get('/api/books', function(req, res) {
 
 app.post('/api/books', function(req, res) {
   var book = new BookModel({
-    title: req.body.title,
-    author: req.body.author,
-    releaseDate: req.body.releaseDate
+    title       : req.body.title,
+    author      : req.body.author,
+    releaseDate : req.body.releaseDate
   });
 
   return book.save(function(err) {
