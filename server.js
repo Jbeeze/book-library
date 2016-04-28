@@ -90,6 +90,21 @@ app.put('/api/books/:id', function(req, res) {
   });
 });
 
+app.delete('/api/books/:id', function(req, res) {
+  console.log('Deleting book with id: ' + req.params.id);
+  return BookModel.findById(req.params.id, function(err, book) {
+    return book.remove(function(err) {
+      if (!err) {
+        console.log('Book removed');
+        return res.send('');
+      }
+      else {
+        console.log(err);
+      }
+    });
+  });
+});
+
 var port = 4711;
 
 app.listen(port, function() {
