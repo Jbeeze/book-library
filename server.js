@@ -51,7 +51,8 @@ app.post('/api/books', function(req, res) {
   var book = new BookModel({
     title       : req.body.title,
     author      : req.body.author,
-    releaseDate : req.body.releaseDate
+    releaseDate : req.body.releaseDate,
+    keywords    : req.body.keywords
   });
 
   return book.save(function(err) {
@@ -79,9 +80,10 @@ app.get('/api/books/:id', function(req, res) {
 app.put('/api/books/:id', function(req, res) {
   console.log('Updating book: ' + req.body.title);
   return BookModel.findById(req.params.id, function(err,book) {
-    book.title = req.body.title;
-    book.author = req.body.author;
+    book.title       = req.body.title;
+    book.author      = req.body.author;
     book.releaseDate = req.body.releaseDate;
+    book.keywords    = req.body.keywords;
 
     return book.save(function(err) {
       if(!err) {
