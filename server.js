@@ -71,6 +71,25 @@ app.get('/api/books/:id', function(req, res) {
   });
 });
 
+app.put('/api/books/:id', function(req, res) {
+  console.log('Updating book: ' req.body.title);
+  return BookModel.findById(req.params.id, function(err,book) {
+    book.title = req.body.title;
+    book.author = req.body.author;
+    book.releaseDate = req.body.releaseDate;
+
+    return book.save(function(err) {
+      if(!err) {
+        console.log('book updated');
+        return res.send(book);
+      }
+      else {
+        console.log(err);
+      }
+    });
+  });
+});
+
 var port = 4711;
 
 app.listen(port, function() {
